@@ -4,21 +4,93 @@ import { Permissions, Notifications } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
-
 import Home from './screens/Home';
 import Settings from './screens/Settings';
+import List from './screens/List';
 
-import { TabNavigator } from 'react-navigation';
-impot { Icon } form 'react-native-elements';
+import { TabNavigator , TabBarBottom, StackNavigator } from 'react-navigation';
+import { Icon } from 'react-native-elements';
 
-const Tabs = TabNavigator({
-    Home: {
-        screen: Home
+const HomeStack = StackNavigator({
+    Home : {
+        screen: Home,
+        navigationOptions : {
+            title : 'Home'
+        }
     },
-    Settings: {
-        screen: Settings
+    List : {
+        screen : List,
+        navigationOptions : {
+            title : 'List'
+        }
     }
 });
+
+const Tabs = TabNavigator(
+{
+    Home: {
+        screen: HomeStack,
+        navigationOptions : {
+            tabBarIcon: ({ tintColor }) => {
+                return (<View style={{flex: 1, justifyContent:"center", paddingTop: 5}}><Ionicons name="md-home" size={28} color={tintColor}/></View>)
+            },
+        }
+    },
+    Settings: {
+        screen: Settings,
+        navigationOptions : {
+            tabBarIcon: ({ tintColor }) => {
+                return (<View style={{flex: 1, justifyContent:"center", paddingTop: 5}}><Ionicons name="md-construct" size={28} color={tintColor}/></View>)
+            },
+        }
+    }
+},
+{
+    defaultNavigationOptions: ({ navigation }) => ({
+          tabBarIcon: ({ focused, horizontal, tintColor }) => {
+            const { routeName } = navigation.state;
+            let iconName;
+            if (routeName === 'Home') {
+              iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+            } else if (routeName === 'Settings') {
+              iconName = `ios-options${focused ? '' : '-outline'}`;
+            }
+
+            // You can return any component that you like here! We usually use an
+            // icon component from react-native-vector-icons
+            return <Ionicons name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
+          },
+    }),
+    tabBarOptions: {
+      activeTintColor: 'red',
+      inactiveTintColor: 'grey',
+      style: {
+        backgroundColor: 'white',
+        borderTopColor: 'red',
+      },
+      labelStyle: {
+        fontSize: 12,
+        fontWeight: 'normal'
+      },
+      indicatorStyle: {
+        borderBottomColor: 'red',
+        borderBottomWidth: 4,
+      },
+    },
+    initialRouteName: 'Home',
+    order: ['Home', 'Settings'],
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+  },
+  {
+    ...TabNavigator.Presets,
+    animationEnabled: false,
+    swipeEnabled: false,
+    showIcon: false,
+  }
+
+
+);
 
 class Main extends React.Component {
 
@@ -27,9 +99,9 @@ class Main extends React.Component {
     }
 
     render() {
+        console.disableYellowBox = true;
         return (
-            <View>
-                <Text>Header 2</Text>
+            <View style={{flex: 1}}>
                 <Tabs />
             </View>
         );
