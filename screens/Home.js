@@ -8,8 +8,11 @@ export default class Home extends React.Component {
 
         return(
             <View style={styles.container}>
-                <Button style={styles.button} title="List" onPress={()=>this.props.navigation.navigate('List')} />
-                <Text>This is the Home Screen 3</Text>
+                <View>
+                    <Button style={styles.button} title="List" onPress={()=>this.props.navigation.navigate('List')} />
+                    <Text>This is the Home Screen 3</Text>
+                </View>
+
                 <Image
                     style={styles.image}
                     source={{uri: 'https://media.licdn.com/dms/image/C4E03AQEiPGGFO6QChw/profile-displayphoto-shrink_200_200/0?e=1549497600&v=beta&t=Nh8aM6p8avbTUgjU37y_C3xuPyKgGpEEn_Ouzu41qFU'}}
@@ -21,13 +24,16 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
     container : {
-        flex : 1,
-        flexDirection: 'row',
+        display : 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center'
     },
+    header : {
+        alignItems: 'center'
+    },
     button : {
-        width: '30px',
+        flex: 1,
         padding: 5
     },
     image: {
