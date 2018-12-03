@@ -1,7 +1,5 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, Image } from 'react-native';
-import ReactPlayer from 'react-player'
-
 
 export default class Home extends React.Component {
     constructor() {
@@ -240,7 +238,7 @@ export default class Home extends React.Component {
     rotateIndex() {
         setInterval(()=>{
             this.setState( { picIndex: this.state.picIndex < this.state.pics.length - 1 ? this.state.picIndex + 1 : 0 })
-        }, 500, this);
+        }, 1000, this);
     }
 
     render() {
@@ -259,7 +257,10 @@ export default class Home extends React.Component {
                     source={{uri: this.state.pics[this.state.picIndex]}}
                 />
 
-                <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' playing />
+                <Text>Video </Text>
+
+
+
             </View>
         );
     }

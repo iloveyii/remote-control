@@ -27,7 +27,10 @@
       "backgroundColor": "#051C4B"
     },
     "android": {
-      "package": "com.triggysport",
+      "package": "se.softhem.babymon",
+      "versionCode" : 1,
+      "permissions" : [],
+      "icon": "./assets/icon.png",
       "googleServicesFile": "./google-services.json"
     }
     
