@@ -9,7 +9,6 @@ import Settings from './screens/Settings';
 import List from './screens/List';
 
 import { TabNavigator , TabBarBottom, StackNavigator } from 'react-navigation';
-import { Icon } from 'react-native-elements';
 
 const HomeStack = StackNavigator({
     Home : {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, Image } from 'react-native';
-import FastImage from 'react-native-fast-image';
-import Video from 'react-native-video';
+import ReactPlayer from 'react-player'
+
 
 export default class Home extends React.Component {
     constructor() {
@@ -259,25 +259,7 @@ export default class Home extends React.Component {
                     source={{uri: this.state.pics[this.state.picIndex]}}
                 />
 
-                <FastImage
-                    style={styles.image}
-                    source={{
-                        uri: this.state.pics[this.state.picIndex],
-                        priority: FastImage.priority.normal,
-                    }}
-                    resizeMode={FastImage.resizeMode.contain}
-                />
-
-                <Video
-                    source={require('http://softhem.se/motion/01-20180303093457.avi')}
-                    style={{ width: 800, height: 800 }}
-                    muted={true}
-                    repeat={true}
-                    resizeMode={"cover"}
-                    volume={1.0}
-                    rate={1.0}
-                    ignoreSilentSwitch={"obey"}
-                />
+                <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' playing />
             </View>
         );
     }
@@ -300,6 +282,7 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: 400,
-        resizeMode: 'stretch'
+        resizeMode: 'stretch',
+        padding: 5
     }
-})
+});
