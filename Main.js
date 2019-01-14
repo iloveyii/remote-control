@@ -14,7 +14,15 @@ const HomeStack = StackNavigator({
     Home : {
         screen: Home,
         navigationOptions : {
-            title : 'Home'
+            title : 'Home',
+            headerStyle: {
+                backgroundColor: '#16a085',
+                paddingTop: 0
+            },
+            headerTitleStyle: {
+                  fontWeight: 'bold',
+                  padding: 0
+            },
         }
     },
     List : {
